@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './Pages/MainPage';
 import reportWebVitals from './reportWebVitals';
+import { createHashRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from './Pages/Common/ErrorPage';
+
+const router = createHashRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  }
+]);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <RouterProvider router={router} />
   </React.StrictMode>
 );
 
